@@ -5,9 +5,9 @@ import arrow.core.monad
 import arrow.syntax.functor.map
 import arrow.syntax.option.some
 import arrow.typeclasses.binding
-import com.josedlpozo.kompiler.core.command.CommandExecutor.Companion.PROJECT_NAME_COMMAND
-import com.josedlpozo.kompiler.core.command.CommandExecutor.Companion.USER_ALIAS_COMMAND
-import com.josedlpozo.kompiler.core.command.CommandExecutor.Companion.USER_EMAIL_COMMAND
+import com.josedlpozo.kompiler.core.command.CommandLineExecutor.Companion.PROJECT_NAME_COMMAND
+import com.josedlpozo.kompiler.core.command.CommandLineExecutor.Companion.USER_ALIAS_COMMAND
+import com.josedlpozo.kompiler.core.command.CommandLineExecutor.Companion.USER_EMAIL_COMMAND
 import com.josedlpozo.kompiler.core.di.Locator
 import com.josedlpozo.kompiler.core.di.ServiceLocator
 import com.josedlpozo.kompiler.core.models.Kompile

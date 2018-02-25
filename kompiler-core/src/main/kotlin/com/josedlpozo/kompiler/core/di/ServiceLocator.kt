@@ -3,6 +3,7 @@ package com.josedlpozo.kompiler.core.di
 import com.josedlpozo.kompiler.core.api.ApiClient
 import com.josedlpozo.kompiler.core.api.KompilerApiClient
 import com.josedlpozo.kompiler.core.command.CommandExecutor
+import com.josedlpozo.kompiler.core.command.CommandLineExecutor
 import com.josedlpozo.kompiler.core.logger.Logger
 
 class ServiceLocator(private val verbose: Boolean, private val endPoint: String) : Locator {
@@ -11,6 +12,6 @@ class ServiceLocator(private val verbose: Boolean, private val endPoint: String)
 
     override val apiClient: ApiClient by lazy { KompilerApiClient(endPoint, logger) }
 
-    override val commandExecutor: CommandExecutor by lazy { CommandExecutor() }
+    override val commandExecutor: CommandExecutor by lazy { CommandLineExecutor() }
 
 }
