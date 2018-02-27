@@ -5,7 +5,7 @@ import com.josedlpozo.kompiler.core.models.Kompile
 
 class KompilerApiClient(override val host: String, private val logger: Logger) : ApiClient {
 
-    private val saveCompileEndPoint = "/api/v1/kompiles/create"
+    private val saveCompileEndPoint = "/api/v1/kompiles"
 
     override fun saveKompile(kompile: Kompile) {
         val (duration, user, project, alias) = kompile
