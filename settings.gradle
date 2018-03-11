@@ -1,1 +1,1 @@
-include ':kompiler', ':kompiler-core'
+include ':kompile', ':kompile-core'
