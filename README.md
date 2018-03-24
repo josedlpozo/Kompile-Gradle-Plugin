@@ -1,5 +1,5 @@
 # Kompile Gradle Plugin
-[![CircleCI](https://circleci.com/gh/josedlpozo/Kompiler-Plugin.svg?style=svg)](https://circleci.com/gh/josedlpozo/Kompiler-Plugin)
+[![CircleCI](https://circleci.com/gh/josedlpozo/Kompile-Gradle-Plugin.svg?style=svg)](https://circleci.com/gh/josedlpozo/Kompile-Gradle-Plugin)
 
 Kompile Gradle Plugin is a [Gradle Plugin](https://docs.gradle.org/current/userguide/custom_plugins.html) that calculate how much time have you been kompiling and send it to [Kompile](https://github.com/josedlpozo/Kompile). 
 
