@@ -8,13 +8,13 @@ import com.josedlpozo.kompile.core.command.CommandLineExecutor.Companion.PROJECT
 import com.josedlpozo.kompile.core.command.CommandLineExecutor.Companion.USER_ALIAS_COMMAND
 import com.josedlpozo.kompile.core.command.CommandLineExecutor.Companion.USER_EMAIL_COMMAND
 import com.josedlpozo.kompile.core.di.Locator
-import com.josedlpozo.kompile.core.models.Kompile
+import com.josedlpozo.kompile.core.models.KompileInfo
 import com.nhaarman.mockito_kotlin.*
 import org.junit.Test
 
-class KompilerTest {
+class KompileTest {
 
-    private lateinit var kompiler: Kompiler
+    private lateinit var kompile: Kompile
     private val commandExecutor: CommandExecutor = mock {  }
     private val apiClient: ApiClient = mock {  }
     private val serviceLocator: Locator = mock {
@@ -23,17 +23,17 @@ class KompilerTest {
     }
 
     @Test fun `given an empty host, then saveKompile is not called`() {
-        kompiler = Kompiler("", serviceLocator)
+        kompile = Kompile("", serviceLocator)
 
-        kompiler.handle(200)
+        kompile.handle(200)
 
         verify(apiClient, never()).saveKompile(any())
     }
 
     @Test fun `given a zero duration, then saveKompile is not called`() {
-        kompiler = Kompiler(HOST, serviceLocator)
+        kompile = Kompile(HOST, serviceLocator)
 
-        kompiler.handle(0)
+        kompile.handle(0)
 
         verify(apiClient, never()).saveKompile(any())
     }
@@ -43,9 +43,9 @@ class KompilerTest {
         whenever(commandExecutor.execute(USER_EMAIL_COMMAND)).thenReturn(USER_EMAIL.some())
         whenever(commandExecutor.execute(PROJECT_NAME_COMMAND)).thenReturn(PROJECT.some())
 
-        kompiler = Kompiler(HOST, serviceLocator)
+        kompile = Kompile(HOST, serviceLocator)
 
-        kompiler.handle(DURATION)
+        kompile.handle(DURATION)
 
         verify(apiClient, never()).saveKompile(any())
     }
@@ -55,9 +55,9 @@ class KompilerTest {
         whenever(commandExecutor.execute(USER_EMAIL_COMMAND)).thenReturn(None)
         whenever(commandExecutor.execute(PROJECT_NAME_COMMAND)).thenReturn(PROJECT.some())
 
-        kompiler = Kompiler(HOST, serviceLocator)
+        kompile = Kompile(HOST, serviceLocator)
 
-        kompiler.handle(DURATION)
+        kompile.handle(DURATION)
 
         verify(apiClient, never()).saveKompile(any())
     }
@@ -67,9 +67,9 @@ class KompilerTest {
         whenever(commandExecutor.execute(USER_EMAIL_COMMAND)).thenReturn(USER_EMAIL.some())
         whenever(commandExecutor.execute(PROJECT_NAME_COMMAND)).thenReturn(None)
 
-        kompiler = Kompiler(HOST, serviceLocator)
+        kompile = Kompile(HOST, serviceLocator)
 
-        kompiler.handle(DURATION)
+        kompile.handle(DURATION)
 
         verify(apiClient, never()).saveKompile(any())
     }
@@ -79,19 +79,19 @@ class KompilerTest {
         whenever(commandExecutor.execute(USER_EMAIL_COMMAND)).thenReturn(USER_EMAIL.some())
         whenever(commandExecutor.execute(PROJECT_NAME_COMMAND)).thenReturn(PROJECT.some())
 
-        kompiler = Kompiler(HOST, serviceLocator)
+        kompile = Kompile(HOST, serviceLocator)
 
-        kompiler.handle(DURATION)
+        kompile.handle(DURATION)
 
-        verify(apiClient).saveKompile(Kompile(DURATION, USER_EMAIL, PROJECT, USER_ALIAS))
+        verify(apiClient).saveKompile(KompileInfo(DURATION, USER_EMAIL, PROJECT, USER_ALIAS))
     }
 
     companion object {
-        const val HOST = "http://kompiler.io"
+        const val HOST = "http://kompile.io"
         const val DURATION = 7000L
 
-        const val USER_ALIAS = "kompiler-user"
-        const val USER_EMAIL = "kompiler@info.com"
-        const val PROJECT = "Kompiler-plugin"
+        const val USER_ALIAS = "kompile-user"
+        const val USER_EMAIL = "kompile@info.com"
+        const val PROJECT = "Kompile-plugin"
     }
 }
