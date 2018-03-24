@@ -1,6 +1,6 @@
 package com.josedlpozo.kompile.plugin
 
-open class KompilerExtension {
+open class KompileExtension {
 
     companion object {
         const val NAME = "kompile"
