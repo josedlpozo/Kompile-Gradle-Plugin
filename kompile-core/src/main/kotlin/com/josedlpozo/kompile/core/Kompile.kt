@@ -10,9 +10,9 @@ import com.josedlpozo.kompile.core.command.CommandLineExecutor.Companion.USER_AL
 import com.josedlpozo.kompile.core.command.CommandLineExecutor.Companion.USER_EMAIL_COMMAND
 import com.josedlpozo.kompile.core.di.Locator
 import com.josedlpozo.kompile.core.di.ServiceLocator
-import com.josedlpozo.kompile.core.models.Kompile
+import com.josedlpozo.kompile.core.models.KompileInfo
 
-class Kompiler internal constructor(private val host: String, private val locator: Locator) {
+class Kompile internal constructor(private val host: String, private val locator: Locator) {
 
     constructor(verbose: Boolean, host: String) : this(host, ServiceLocator(verbose, host))
 
@@ -29,7 +29,7 @@ class Kompiler internal constructor(private val host: String, private val locato
             val project = commandExecutor.execute(PROJECT_NAME_COMMAND).bind()
             val alias = commandExecutor.execute(USER_ALIAS_COMMAND).bind()
             val someDuration = duration.some().bind()
-            Kompile(someDuration, user, project, alias)
+            KompileInfo(someDuration, user, project, alias)
         }.map { apiClient.saveKompile(it) }
     }
 
