@@ -13,7 +13,7 @@ This plugin picks your alias, email and project in which you are working and sen
  - User name: ```git config --get user.name```
  - User email: ```git config --get user.email```
 
- If these commands print an output in your command line, you're right to use Kompile Gradle Plugin :smiley:, other way please open an issue.
+ If these commands print an output in your command line, you're ready to use Kompile Gradle Plugin :smiley:, other way please open an issue.
  
  ## Installation
  Apply the plugin in your ``build.gradle``:
