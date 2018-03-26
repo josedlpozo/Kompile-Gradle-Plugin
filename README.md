@@ -25,7 +25,7 @@ This plugin picks your alias, email and project in which you are working and sen
      maven { url 'https://jitpack.io' }
    }
    dependencies {
-     classpath 'com.github.josedlpozo:Kompile-Gradle-Plugin:0.0.1'
+     classpath 'com.github.josedlpozo:Kompile-Gradle-Plugin:0.0.2'
    }
  }
  
