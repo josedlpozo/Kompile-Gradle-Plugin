@@ -44,7 +44,7 @@ class KompileListener(private val project: Project) : TaskExecutionListener, Bui
 
         val totalTasks = tasks.values.fold(0.toLong(), { acc, value -> acc + value })
 
-        val seconds = TimeUnit.SECONDS.convert(finish - start, TimeUnit.NANOSECONDS)
+        val seconds = TimeUnit.SECONDS.convert(totalTasks, TimeUnit.NANOSECONDS)
 
         val parameters = project.extensions.getByName(KompileExtension.NAME) as KompileExtension
         kompile = Kompile(parameters.verbose, parameters.host)
